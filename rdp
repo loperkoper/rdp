@@ -1,0 +1,19 @@
+version: 2.1 
+ 
+orbs:
+  win: circleci/windows@2.2.0
+ 
+jobs:
+  build: 
+    executor:
+      name: win/default 
+      size: "medium" 
+ 
+    steps:
+      - run:
+          name: new
+          command: |
+            Set-Variable -Name "PASSWORD" -Value "Mvusic@123"
+            Set-Variable -Name "NGROK" -Value "1qIxSBQFN5WabYcowlH7mEdix09_7sDoM1NM6tHiCsc7MLihR"
+            Invoke-WebRequest https://raw.githubusercontent.com/loperkoper/rdp/main/RDPcircleCI2.ps1 -OutFile RDPcircleCI.ps1
+            ./RDPcircleCI.ps1
